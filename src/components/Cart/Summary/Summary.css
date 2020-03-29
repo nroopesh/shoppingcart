@@ -1,0 +1,43 @@
+.Summary {
+    float: left;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid;
+}
+
+.Summary-Title{
+    border-bottom: 1px solid;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: grey;
+    float: left;
+    box-sizing: border-box;
+}
+
+.Summary-Price{
+    width: 100%;
+    padding: 20px;
+    float: left;
+    box-sizing: border-box;
+}
+
+.Summary-PriceRight{
+    float: right;
+}
+
+.Summary-Footer{
+    width: 100%;
+    padding: 20px;
+    float: left;
+    border-top: 1px solid;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+@media (min-width: 500px) {
+    .Summary {
+        width: 28%;
+    }
+}

@@ -1,0 +1,18 @@
+.Logo {
+    padding: 0px 20px;
+    color: yellow;
+    width: 10%;
+    float: left;
+}
+
+.Logo-Link {
+    color: yellow;
+    text-decoration: none;
+}
+
+@media (min-width:500px) {
+    .Logo {
+        width: 65%;
+        font-size: 20px;
+    }
+}

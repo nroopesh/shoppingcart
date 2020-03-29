@@ -1,0 +1,14 @@
+.Cartcontent {
+    width: 100%;
+}
+
+.Cart-Product {
+    width: 100%;
+    float: left;
+}
+
+@media (min-width: 500px) {
+    .Cart-Product {
+        width: 70%;
+    }
+}

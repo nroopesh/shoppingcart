@@ -1,0 +1,29 @@
+.Filter {
+    width: 100%;
+    float: left;
+}
+
+.Filter-Title {
+    font-weight: bold;
+}
+
+.Filter-Range {
+    padding:10px 10px;
+}
+
+.Filter-Min {
+    float: left;
+}
+
+.Filter-Max{
+    float: right;
+}
+
+@media (min-width: 500px) {
+    .Filter {
+        width: 15%;
+        box-sizing: border-box;
+        padding:10px;
+    }
+
+}

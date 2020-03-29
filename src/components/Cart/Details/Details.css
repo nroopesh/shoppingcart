@@ -1,0 +1,108 @@
+.Details {
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid;
+}
+
+.Details-Img {
+    width: 30%;
+    float: left;
+}
+
+
+.Details-Title{
+    width: 60%;
+    float: left;
+    padding: 0px 10px;
+    text-align: left;
+}
+
+.Details-Price{
+    float: left;
+    padding: 10px;
+    text-align: left;
+}
+
+.Details-Discounted {
+    color:darkslategrey;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.Details-Real {
+    color:grey;
+    text-decoration:line-through;
+    padding-right: 5px;
+}
+
+.Details-Discount {
+    color: lightgreen;
+    font-weight: bold;
+}
+
+.Details-Buttons {
+    width: 60%;
+    font-weight: bold;
+}
+
+.Details-Buttons button {
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.Details-Remove {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+@media (min-width: 500px) {
+    .Details {
+        height: 175px;
+        display: flexbox;
+    }
+
+    .Details-Img {
+        width: 10%;
+        height: auto;
+        float: left;
+        display: flexbox
+    }
+
+    .Details-Title {
+        width: 75%;
+    }
+
+    .Details-Price{
+        padding-top: 20px;
+        width: auto;
+    }
+    
+    .Details-Buttons {
+        width: auto;
+        padding-left: 50px;
+        padding-top: 20px;
+        float: left;
+    }
+    .Details-Buttons button {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .Details-Remove { 
+        float: left;
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+
+    
+}

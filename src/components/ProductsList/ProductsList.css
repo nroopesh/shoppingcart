@@ -1,0 +1,10 @@
+.ProductsList {
+    overflow: hidden;
+    width: 85%;
+}
+
+@media (max-width: 500px) {
+    .ProductsList {
+        width: 100%;
+    }
+}

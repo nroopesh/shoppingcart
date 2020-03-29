@@ -1,0 +1,67 @@
+.Product {
+    width: 45%;
+    float: left;
+    padding: 10px 5px;
+    height: 100%;
+    text-align: center;
+}
+
+.Product-Img {
+    width: 90%;
+    height: auto;
+    clear: both;
+}
+
+.Product-Title{
+    width: 100%;
+    float: left;
+    padding: 10px 0px 10px 10px;
+    text-align: left;
+}
+
+.Product-Price{
+    width: 100%;
+    float: left;
+    padding: 10px;
+    text-align: left;
+}
+
+.Price-Discounted {
+    color:darkslategrey;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.Price-Real {
+    color:grey;
+    text-decoration:line-through;
+    padding-right: 5px;
+}
+
+.Price-Discount {
+    color: lightgreen;
+    font-weight: bold;
+}
+
+.Product-button {
+    background-color: orange;
+    border: 1px orange;
+    color:black;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+@media (min-width: 500px) {
+    .Product {
+        width: 20%;
+        font-size: 16px;
+    }
+
+    .Product-button {
+        font-size: 16px;
+    }
+}
