@@ -13,7 +13,7 @@ const store = createStore(productReducer);
 
 ReactDOM.render(
 	<Provider store={store}>
-		<BrowserRouter basename="/shoppingcart">
+		<BrowserRouter>
 			<App />
 		</BrowserRouter>
 	</Provider>,
