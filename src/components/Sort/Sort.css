@@ -5,6 +5,7 @@
 
 .Sort-Title{
     font-weight: bold;
+    padding: 10px;
 }
 
 .Sort-Item {
@@ -23,6 +24,8 @@
     height: 40px;
     background-color: white;
     font-weight: bold;
+    border: 1px solid grey;
+    color: darkblue;
 }
 
 @media (min-width: 500px) {
@@ -47,6 +50,12 @@
         font-size: 16px;
         font-weight: bold;
         cursor: pointer;
+        color: grey;
+    }
+
+    .Sort-Item button.active {
+        color: blue;
+        border-bottom: 1px solid blue;
     }
 
 }

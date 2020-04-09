@@ -1,10 +1,12 @@
 .ProductsList {
-    overflow: hidden;
-    width: 85%;
+    display: grid;
+    clear: both;
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 20px;
 }
 
-@media (max-width: 500px) {
+@media (min-width: 500px) {
     .ProductsList {
-        width: 100%;
+        grid-template-columns: 20% 20% 20% 20% 20%;
     }
 }

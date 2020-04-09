@@ -5,6 +5,8 @@
 
 .Filter-Title {
     font-weight: bold;
+    text-align: left;
+    padding: 10px;
 }
 
 .Filter-Range {
@@ -21,9 +23,24 @@
 
 @media (min-width: 500px) {
     .Filter {
-        width: 15%;
         box-sizing: border-box;
-        padding:10px;
+        padding:10px 30px;
+        text-align: center;
     }
+
+    .Button {
+        background-color: darkblue;
+        color:white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+    
 
 }

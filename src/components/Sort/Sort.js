@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import "./Sort.css";
 
@@ -7,11 +8,11 @@ class Sort extends Component {
 		option: 0,
 	};
 
-	onClick = val => {
+	onClick = (val) => {
 		this.setState({ option: val });
 	};
 
-	onClickApply = val => {
+	onClickApply = (val) => {
 		this.props.onSortHandler(val);
 	};
 
@@ -68,17 +69,28 @@ class Sort extends Component {
 					<div className="Sort-Title">Sort By</div>
 					<ul>
 						<li key={1} className="Sort-Item">
-							<button onClick={() => this.onClickApply(1)}>
+							<button
+								className={this.props.sort === 1 ? "active" : ""}
+								onClick={() => this.onClickApply(1)}
+							>
 								Price -- High Low
 							</button>
 						</li>
 						<li key={2} className="Sort-Item">
-							<button onClick={() => this.onClickApply(2)}>
+							<button
+								className={this.props.sort === 2 ? "active" : ""}
+								onClick={() => this.onClickApply(2)}
+							>
 								Price -- Low High
 							</button>
 						</li>
 						<li key={3} className="Sort-Item">
-							<button onClick={() => this.onClickApply(3)}>Discount</button>
+							<button
+								className={this.props.sort === 3 ? "active" : ""}
+								onClick={() => this.onClickApply(3)}
+							>
+								Discount
+							</button>
 						</li>
 					</ul>
 				</div>
@@ -88,4 +100,10 @@ class Sort extends Component {
 	}
 }
 
-export default Sort;
+const mapStateToProps = (state) => {
+	return {
+		sort: state.sort,
+	};
+};
+
+export default connect(mapStateToProps)(Sort);

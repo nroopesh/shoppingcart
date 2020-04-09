@@ -14,12 +14,10 @@ class Search extends Component {
 
 	toggleBox = () => {
 		let show = this.state.show;
-		if (!show) {
-			this.setState({ show: true });
-		}
+		this.setState({ show: !show });
 	};
 
-	onChangeHandler = e => {
+	onChangeHandler = (e) => {
 		this.props.onSearchChange(e.target.value);
 	};
 
@@ -44,9 +42,9 @@ class Search extends Component {
 	}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-		onSearchChange: e => dispatch({ type: actionTypes.SEARCH, search: e }),
+		onSearchChange: (e) => dispatch({ type: actionTypes.SEARCH, search: e }),
 	};
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Details.css";
 
-const Details = props => {
+const Details = (props) => {
 	let discountPrice =
 		props.prd.price - props.prd.price * (props.prd.discount / 100);
 	return (
@@ -14,8 +14,8 @@ const Details = props => {
 			<div className="Details-Title">{props.prd.name}</div>
 
 			<div className="Details-Price">
-				<span className="Details-Discounted">₹ {discountPrice}</span>
-				<span className="Details-Real">{props.prd.price}</span>
+				<span className="Details-Discounted">₹ {discountPrice.toFixed(2)}</span>
+				<span className="Details-Real">{props.prd.price.toFixed(2)}</span>
 				<span className="Details-Discount">{props.prd.discount}% off</span>
 			</div>
 

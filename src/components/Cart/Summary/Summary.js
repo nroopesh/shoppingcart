@@ -1,13 +1,13 @@
 import React from "react";
 
 import "./Summary.css";
-const Summary = props => {
+const Summary = (props) => {
 	return (
 		<div className="Summary">
 			<span className="Summary-Title">PRICE DETAILS</span>
 			<span className="Summary-Price">
 				Price ({props.qty} items):{" "}
-				<span className="Summary-PriceRight">₹{props.price}</span>
+				<span className="Summary-PriceRight">₹{props.price.toFixed(2)}</span>
 			</span>
 			<span className="Summary-Price">
 				Discount :<span className="Summary-PriceRight">₹{props.discount}</span>
@@ -15,7 +15,7 @@ const Summary = props => {
 			<span className="Summary-Footer">
 				Total Payable:{" "}
 				<span className="Summary-PriceRight">
-					₹{props.price - props.discount}
+					₹{(props.price - props.discount).toFixed(2)}
 				</span>
 			</span>
 		</div>

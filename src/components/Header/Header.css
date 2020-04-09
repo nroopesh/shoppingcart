@@ -1,7 +1,15 @@
 .Header {
-    width: 100%;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
     height: 20px;
     background-color: darkblue;
     color: white;
     padding: 15px 0px; 
+}
+
+
+@media (min-width: 500px) {
+    .Header {
+        grid-template-columns: 1% 96% 3%;
+    }
 }

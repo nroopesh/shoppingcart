@@ -1,8 +1,7 @@
 
 .Products {
-    width: 100%;
-    float: left;
-    padding-bottom: 2.5rem;
+    display: grid;
+    grid-template-columns: 100%;
 }
 
 .Products-Option{
@@ -17,4 +16,11 @@
     background-color: white;
     height: 100%;
     text-align: center;
+}
+
+
+@media (min-width: 500px) {
+    .Products {
+        grid-template-columns: 20% 80%;
+    }
 }

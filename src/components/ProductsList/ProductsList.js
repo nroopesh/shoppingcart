@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import MediaQuery from "react-responsive";
 import axios from "axios";
 
+import Spinner from "../Spinner/Spinner";
 import * as actionTypes from "../../store/actions";
 import Product from "./Product/Product";
 import Sort from "../../components/Sort/Sort";
@@ -10,23 +11,37 @@ import "./ProductsList.css";
 
 class ProductsList extends Component {
 	componentDidMount() {
-		axios.get("https://api.myjson.com/bins/qzuzi").then(res => {
-			this.props.onLoadProduct(res.data);
-		});
+		///axios.get("https://api.myjson.com/bins/qzuzi").then(res => {
+		axios
+			.get("https://api.jsonbin.io/b/5e8c3a45af7c476bc47e477d")
+			.then((res) => {
+				let prd = res.data.items.map((each, index) => {
+					return {
+						id: index + 1,
+						name: each.name,
+						price: each.price.display + (index + 1),
+						discount: each.discount,
+						img_url: "https://picsum.photos/id/" + (index + 1) + "/200",
+					};
+				});
+				this.props.onLoadProduct(prd);
+			});
 	}
 
-	addtoCart = id => {
+	addtoCart = (id) => {
 		this.props.onAddToCart(id);
 	};
 
 	render() {
-		let product = null;
+		let product = <Spinner></Spinner>;
 
 		if (this.props.products != null) {
 			let products = this.props.products;
 
 			//Applying Search
-			products = products.filter(each => each.name.includes(this.props.search));
+			products = products.filter((each) =>
+				each.name.includes(this.props.search),
+			);
 
 			//Applying Sorting
 			if (this.props.sort === 1) {
@@ -44,13 +59,13 @@ class ProductsList extends Component {
 			//Applying Filters
 			if (this.props.filter.length > 0) {
 				products = products.filter(
-					each =>
+					(each) =>
 						each.price >= this.props.filter[0] &&
 						each.price <= this.props.filter[1],
 				);
 			}
 
-			product = products.map(each => {
+			product = products.map((each) => {
 				return (
 					<Product
 						key={each.id}
@@ -60,22 +75,22 @@ class ProductsList extends Component {
 				);
 			});
 		}
-
+		//product = <Spinner></Spinner>;
 		return (
-			<div className="ProductsList">
+			<div>
 				<MediaQuery minDeviceWidth={776}>
 					<Sort
 						ismobile={false}
-						onSortHandler={sort => this.props.onSortChange(sort)}
+						onSortHandler={(sort) => this.props.onSortChange(sort)}
 					></Sort>
 				</MediaQuery>
-				{product}
+				<div className="ProductsList">{product}</div>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
 		products: state.products,
 		cart: state.cart,
@@ -85,12 +100,12 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-		onLoadProduct: data =>
+		onLoadProduct: (data) =>
 			dispatch({ type: actionTypes.FETCH_PRODUCT, products: data }),
-		onAddToCart: id => dispatch({ type: actionTypes.ADD_CART, id: id }),
-		onSortChange: e => dispatch({ type: actionTypes.SORT, sort: e }),
+		onAddToCart: (id) => dispatch({ type: actionTypes.ADD_CART, id: id }),
+		onSortChange: (e) => dispatch({ type: actionTypes.SORT, sort: e }),
 	};
 };
 

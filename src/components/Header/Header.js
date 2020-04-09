@@ -8,9 +8,8 @@ import "./Header.css";
 const Header = () => (
 	<div className="Header">
 		<Logo></Logo>
-
-		<Cart></Cart>
 		<Search></Search>
+		<Cart></Cart>
 	</div>
 );
 

@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
 			cart = [...state.cart];
 			found = -1;
 			if (cart.length > 0) {
-				found = cart.findIndex(each => each.id === action.id);
+				found = cart.findIndex((each) => each.id === action.id);
 			}
 			if (found > -1) {
 				cart[found] = { ...cart[found], qty: cart[found].qty + 1 };
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
 			cart = [...state.cart];
 			found = -1;
 			if (cart.length > 0) {
-				found = cart.findIndex(each => each.id === action.id);
+				found = cart.findIndex((each) => each.id === action.id);
 			}
 			if (found > -1) {
 				if (cart[found].qty > 1) {
@@ -44,7 +44,7 @@ const reducer = (state = initialState, action) => {
 			cart = [...state.cart];
 			found = -1;
 			if (cart.length > 0) {
-				found = cart.findIndex(each => each.id === action.id);
+				found = cart.findIndex((each) => each.id === action.id);
 			}
 			if (found > -1) {
 				cart = cart.filter((each, i) => i !== found);

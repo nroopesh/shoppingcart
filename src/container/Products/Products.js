@@ -31,11 +31,12 @@ class Products extends Component {
 		this.setState({ sortmodal: false, filtermodal: true });
 	};
 
-	filterUpdate = e => {
+	filterUpdate = (e) => {
 		this.props.onFilterChange(e);
+		this.closeModalHandler();
 	};
 
-	sortUpdate = e => {
+	sortUpdate = (e) => {
 		e > 0 && this.props.onSortChange(e);
 		this.closeModalHandler();
 	};
@@ -44,7 +45,7 @@ class Products extends Component {
 		return (
 			<div className="Products">
 				<MediaQuery minDeviceWidth={776}>
-					<Filter onChangeFilter={this.filterUpdate}></Filter>
+					<Filter onChangeFilter={this.filterUpdate} ismobile={false}></Filter>
 				</MediaQuery>
 
 				<MediaQuery maxDeviceWidth={776}>
@@ -64,7 +65,7 @@ class Products extends Component {
 						modalDismiss={this.closeModalHandler}
 						key={1}
 					>
-						<Filter onChangeFilter={this.filterUpdate}></Filter>
+						<Filter onChangeFilter={this.filterUpdate} ismobile={true}></Filter>
 					</Modal>
 
 					<Modal
@@ -82,10 +83,10 @@ class Products extends Component {
 	}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-		onFilterChange: e => dispatch({ type: actionTypes.FILTER, filter: e }),
-		onSortChange: e => dispatch({ type: actionTypes.SORT, sort: e }),
+		onFilterChange: (e) => dispatch({ type: actionTypes.FILTER, filter: e }),
+		onSortChange: (e) => dispatch({ type: actionTypes.SORT, sort: e }),
 	};
 };
 
