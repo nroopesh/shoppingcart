@@ -1,5 +1,6 @@
 .Cartcontent {
-    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
 }
 
 .Cart-Product {
@@ -8,7 +9,8 @@
 }
 
 @media (min-width: 500px) {
-    .Cart-Product {
-        width: 70%;
+    .Cartcontent {
+        display: grid;
+        grid-template-columns: 70% 30%;
     }
 }

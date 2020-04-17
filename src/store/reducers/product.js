@@ -4,6 +4,10 @@ const initialState = {
 	cart: [],
 	search: "",
 	filter: [],
+	filterRange: {
+		min: 0,
+		max: 0,
+	},
 	sort: 0,
 };
 
@@ -13,7 +17,22 @@ let found;
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.FETCH_PRODUCT:
-			return { ...state, products: action.products };
+			let min = action.products.reduce(
+				(min, each) => (min.price > each.price ? each : min),
+				action.products[0],
+			).price;
+
+			let max = action.products.reduce(
+				(max, each) => (max.price > each.price ? max : each),
+				action.products[0],
+			).price;
+
+			return {
+				...state,
+				products: action.products,
+				filterRange: { min: min, max: max },
+			};
+
 		case actionTypes.ADD_CART:
 			cart = [...state.cart];
 			found = -1;

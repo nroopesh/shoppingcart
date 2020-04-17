@@ -6,20 +6,22 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 import "./Cart.css";
 
-const Cart = props => {
+const Cart = (props) => {
+	let productCount = props.cart.reduce((total, each) => total + each.qty, 0);
+
 	return (
 		<div className="Cart ">
 			<NavLink to="/checkout" exact className="Cart-Link">
 				<FontAwesomeIcon icon={faShoppingCart} />
-				{props.cart.length > 0 ? (
-					<span className="Cart-Badge">{props.cart.length}</span>
+				{productCount > 0 ? (
+					<span className="Cart-Badge">{productCount}</span>
 				) : null}
 			</NavLink>
 		</div>
 	);
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
 		cart: state.cart,
 	};

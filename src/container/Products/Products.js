@@ -17,6 +17,8 @@ class Products extends Component {
 		filtermodal: false,
 		sortmodal: false,
 		products: null,
+		min: 0,
+		max: 0,
 	};
 
 	closeModalHandler = () => {
@@ -42,12 +44,31 @@ class Products extends Component {
 	};
 
 	render() {
+		let filterMobile = null,
+			filter = null;
+		if (this.props.filterRange.min > 0 && this.props.filterRange.max > 0) {
+			filter = (
+				<MediaQuery minDeviceWidth={776}>
+					<Filter
+						onChangeFilter={this.filterUpdate}
+						ismobile={false}
+						range={this.props.filterRange}
+					></Filter>
+				</MediaQuery>
+			);
+
+			filterMobile = (
+				<Filter
+					onChangeFilter={this.filterUpdate}
+					ismobile={true}
+					range={this.props.filterRange}
+				></Filter>
+			);
+		}
+
 		return (
 			<div className="Products">
-				<MediaQuery minDeviceWidth={776}>
-					<Filter onChangeFilter={this.filterUpdate} ismobile={false}></Filter>
-				</MediaQuery>
-
+				{filter}
 				<MediaQuery maxDeviceWidth={776}>
 					<div className="Products-Option">
 						<button className="Products-Button" onClick={this.openSort}>
@@ -65,7 +86,7 @@ class Products extends Component {
 						modalDismiss={this.closeModalHandler}
 						key={1}
 					>
-						<Filter onChangeFilter={this.filterUpdate} ismobile={true}></Filter>
+						{filterMobile}
 					</Modal>
 
 					<Modal
@@ -83,6 +104,12 @@ class Products extends Component {
 	}
 }
 
+const mapStateToPros = (state) => {
+	return {
+		filterRange: state.filterRange,
+	};
+};
+
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onFilterChange: (e) => dispatch({ type: actionTypes.FILTER, filter: e }),
@@ -90,4 +117,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(null, mapDispatchToProps)(Products);
+export default connect(mapStateToPros, mapDispatchToProps)(Products);

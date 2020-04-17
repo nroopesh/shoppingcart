@@ -5,11 +5,16 @@ import "rc-slider/assets/index.css";
 import "./Filter.css";
 
 class Filter extends Component {
-	state = {
-		value: [100, 1000],
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			min: this.props.range.min,
+			max: this.props.range.max,
+			value: [],
+		};
+	}
 
-	onChange = (e) => {
+	onRangeChange = (e) => {
 		this.setState({ value: e });
 	};
 
@@ -18,7 +23,7 @@ class Filter extends Component {
 	};
 
 	onCancel = () => {
-		this.props.onChangeFilter(100, 1000);
+		this.props.onChangeFilter([this.props.range.min, this.props.range.max]);
 	};
 
 	render() {
@@ -41,16 +46,15 @@ class Filter extends Component {
 			<div className="Filter">
 				<div className="Filter-Title">Filters Options</div>
 				<div className="Filter-Range">
-					<span className="Filter-Min">₹{this.state.value[0]}</span>
-					<span className="Filter-Max">₹{this.state.value[1]}</span>
+					<span className="Filter-Min">₹{this.state.min}</span>
+					<span className="Filter-Max">₹{this.state.max}</span>
 				</div>
 				<div className="Filter-Range">
 					<Range
-						min={100}
-						max={1000}
-						defaultValue={this.state.value}
-						onChange={this.onChange}
-						tipFormatter={(value) => `Roopesh`}
+						min={this.state.min}
+						max={this.state.max}
+						defaultValue={[this.props.range.min, this.props.range.max]}
+						onChange={this.onRangeChange}
 					/>
 				</div>
 				{buttons}

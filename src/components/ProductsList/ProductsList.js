@@ -8,6 +8,7 @@ import * as actionTypes from "../../store/actions";
 import Product from "./Product/Product";
 import Sort from "../../components/Sort/Sort";
 import "./ProductsList.css";
+import { data } from "../../data/data";
 
 class ProductsList extends Component {
 	componentDidMount() {
@@ -15,17 +16,25 @@ class ProductsList extends Component {
 		axios
 			.get("https://api.jsonbin.io/b/5e8c3a45af7c476bc47e477d")
 			.then((res) => {
-				let prd = res.data.items.map((each, index) => {
-					return {
-						id: index + 1,
-						name: each.name,
-						price: each.price.display + (index + 1),
-						discount: each.discount,
-						img_url: "https://picsum.photos/id/" + (index + 1) + "/200",
-					};
-				});
-				this.props.onLoadProduct(prd);
+				this.loadProduct(res);
+			})
+			.catch((err) => {
+				//alert(err.message);
+				this.loadProduct({ data });
 			});
+	}
+
+	loadProduct(res) {
+		let prd = res.data.items.map((each, index) => {
+			return {
+				id: index + 1,
+				name: each.name,
+				price: each.price.display,
+				discount: each.discount,
+				img_url: "https://picsum.photos/id/" + (index + 1) + "/200",
+			};
+		});
+		this.props.onLoadProduct(prd);
 	}
 
 	addtoCart = (id) => {

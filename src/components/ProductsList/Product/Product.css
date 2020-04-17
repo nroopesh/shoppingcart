@@ -41,6 +41,10 @@
     font-weight: bold;
 }
 
+.Product-Price {
+    font-size: 10px;
+}
+
 .Product-button {
     background-color: orange;
     border: 1px orange;
@@ -57,6 +61,11 @@
     .Product {
         font-size: 16px;
     }
+
+    .Product-Price {
+        font-size: 14px;
+    }
+    
 
     .Product-button {
         font-size: 16px;
